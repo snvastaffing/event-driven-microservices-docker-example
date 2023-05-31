@@ -11,9 +11,12 @@ services:
     environment:
       - PORT=3000
       - MESSAGE_BUS=amqp://rabbitmq
+      - DB_URI=mongodb+srv://xjq:TbfxgJVpA7KnLz7f@test-auth.3w13ht5.mongodb.net/news?retryWrites=true&w=majority
+      - DB_USERNAME=xjq
+      - DB_PASSWORD=TbfxgJVpA7KnLz7f
     links:
       - rabbitmq
-  
+
   events-management:
     container_name: events-management
     build:
@@ -24,9 +27,12 @@ services:
     environment:
       - PORT=3000
       - MESSAGE_BUS=amqp://rabbitmq
+      - DB_URI=mongodb+srv://xjq:TbfxgJVpA7KnLz7f@test-auth.3w13ht5.mongodb.net/news?retryWrites=true&w=majority
+      - DB_USERNAME=xjq
+      - DB_PASSWORD=TbfxgJVpA7KnLz7f
     links:
       - rabbitmq
-  
+
   user-management:
     container_name: user-management
     build:
@@ -37,9 +43,12 @@ services:
     environment:
       - PORT=3000
       - MESSAGE_BUS=amqp://rabbitmq
+      - DB_URI=mongodb+srv://xjq:TbfxgJVpA7KnLz7f@test-auth.3w13ht5.mongodb.net/news?retryWrites=true&w=majority
+      - DB_USERNAME=xjq
+      - DB_PASSWORD=TbfxgJVpA7KnLz7f
     links:
       - rabbitmq
-  
+
   authentication:
     container_name: authentication
     build:
@@ -50,9 +59,12 @@ services:
     environment:
       - PORT=3000
       - MESSAGE_BUS=amqp://rabbitmq
+      - DB_URI=mongodb+srv://xjq:TbfxgJVpA7KnLz7f@test-auth.3w13ht5.mongodb.net/news?retryWrites=true&w=majority
+      - DB_USERNAME=xjq
+      - DB_PASSWORD=TbfxgJVpA7KnLz7f
     links:
       - rabbitmq
-  
+
   notification:
     container_name: notification
     build:
@@ -64,6 +76,9 @@ services:
       - EMAIL_ID=noreply.localnewsapplication@gmail.com
       - EMAIL_PASSWORD=Testing0*
       - ADMIN_EMAIL=localnewsapp340ct@gmail.com
+      - DB_URI=mongodb+srv://xjq:TbfxgJVpA7KnLz7f@test-auth.3w13ht5.mongodb.net/news?retryWrites=true&w=majority
+      - DB_USERNAME=xjq
+      - DB_PASSWORD=TbfxgJVpA7KnLz7f
     links:
       - rabbitmq
 

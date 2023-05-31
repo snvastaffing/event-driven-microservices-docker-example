@@ -13,7 +13,8 @@ router.prefix(`/${config.baseAPIRoute}/${api}`);
 router.get('/', usersController.find);
 
 // POST /api/users
-router.post('/', jwt, usersController.add);
+//router.post('/', jwt, usersController.add);
+router.post('/', usersController.add);
 
 // GET /api/users/id
 router.get('/:id', usersController.findById);
