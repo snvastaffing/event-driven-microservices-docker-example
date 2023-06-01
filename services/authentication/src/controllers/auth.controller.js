@@ -3,11 +3,20 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const Auth = require('../models/auth.model');
 const config = require('../environment/config');
+const Mongoose = require('mongoose');
 
 const authController = {
   authenticate: async (ctx) => {
     try {
+      console.log("Before CAlling the api"+JSON.stringify(ctx.request.body))      
+      
+      
+      console.log("The Database ",Mongoose.connection.db.databaseName);
+      // console.log(Mongoose.connection.db.collection.name);
+
+      
       const user = await Auth.findOne({ emailAddress: ctx.request.body.emailAddress });
+      console.log("The User"+user)
       if (!user) ctx.throw(404);
       if (!(bcrypt.compareSync(ctx.request.body.password, user.password))) {
         ctx.body = { auth: false, token: null };
@@ -18,6 +27,7 @@ const authController = {
         ctx.body = { auth: true, token };
       }
     } catch (err) {
+      console.log("The User"+err)
       ctx.throw(500);
     }
   },
